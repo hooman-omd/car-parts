@@ -43,7 +43,8 @@ Route::prefix('auth')->middleware(NonAuthorize::class)->group(function () {
     Route::post('/register', [AuthController::class, 'registerUser'])->name('auth.register');
     Route::get('/set-email', [AuthController::class, 'resestPassword'])->name('auth.resest-password.set-email');
     Route::post('/set-email', [AuthController::class, 'setEmail'])->name('auth.set-email');
-    Route::get('/set-new-password',[AuthController::class,'setNewPassword'])->name('auth.set-new-password');
+    Route::get('/set-new-password',[AuthController::class,'setNewPasswordView'])->name('auth.set-new-password');
+    Route::post('/set-new-password',[AuthController::class,'setNewPassword'])->name('auth.set-new-password-post');
 });
 
 /////////// user dashboard /////////////

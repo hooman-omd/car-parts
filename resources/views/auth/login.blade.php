@@ -6,14 +6,18 @@
     <div class="row justify-content-center">
         <!-- Login Form -->
         <div class="col-8">
-            @error('attempt-failed')
-            <x-fail-alert>{{ $message }}</x-fail-alert>
-            @enderror
+
             <div class="card shadow-sm" style="text-align: right;">
                 <div class="card-header bg-primary text-white">
                     <h4 class="mb-0">ورود به حساب کاربری</h4>
                 </div>
                 <div class="card-body">
+                    @session('success')
+                        <x-success-alert>{{$value}}</x-success-alert>
+                    @endsession
+                    @error('attempt-failed')
+                        <x-fail-alert>{{ $message }}</x-fail-alert>
+                    @enderror
                     <form method="POST" action="{{route('auth.login')}}">
                         @csrf
                         <div class="form-group">

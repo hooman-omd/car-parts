@@ -9,6 +9,7 @@ use App\Rules\ChangePassword;
 use App\Rules\PasswordExists;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Validation\ValidationException;
@@ -132,7 +133,26 @@ class AuthController extends Controller
         }
     }
 
-    public function setNewPassword(Request $request){
+    public function setNewPasswordView(Request $request)
+    {
+        return \view('auth.set-new-password');
+    }
 
+    public function setNewPassword(Request $request) {
+        $data = $request->validate([
+            'resetKey' => 'required|exists:users,reset_link',
+            'password' => 'required|min:8|confirmed'
+        ],[
+            'resetKey' => 'خطا در بروزرسانی رمزعبور',
+            'password.required' => 'فیلد رمز عبور الزامی است',
+            'password.min' => 'رمز عبور باید حداقل 8 کاراکتر باشد',
+            'password.confirmed' => 'تکرار رمز عبور اشتباه است',
+        ]);
+
+        $user = User::where('reset_link',$data['resetKey'])->first();
+        $user->reset_link = null;
+        $user->password = Hash::make($data['password']);
+        $user->save();
+        return \redirect()->route('auth.form.login')->with('success','رمز عبور جدید با موفقیت ثبت شد');
     }
 }
