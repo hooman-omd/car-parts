@@ -1,6 +1,8 @@
 @extends('layouts.main_layout')
 @section('content')
 @use('App\Utilities\PersianNumbers')
+
+<x-breadcrumb>سبد خرید</x-breadcrumb>
 <!-- Cart Content -->
 <div class="container py-5 cart-content">
     <h2 class="mb-5">سبد خرید شما <i class="fas fa-shopping-cart"></i></h2>

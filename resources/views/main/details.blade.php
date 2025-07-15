@@ -3,6 +3,7 @@
 @section('content')
 @use('App\utilities\PersianNumbers')
 
+<x-breadcrumb>جزئیات محصول</x-breadcrumb>
 <!-- Product Detail Content -->
 <div class="container py-5">
     <div class="row">

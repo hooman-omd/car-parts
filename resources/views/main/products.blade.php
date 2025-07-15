@@ -2,7 +2,7 @@
 
 @section('content')
 
-
+<x-breadcrumb>محصولات</x-breadcrumb>
 <!-- Products Page Content -->
 <div class="container py-5">
     <div class="row">

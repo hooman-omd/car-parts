@@ -131,4 +131,8 @@ class AuthController extends Controller
             return \back()->with('fail', 'خطا در ارسال ایمیل');
         }
     }
+
+    public function setNewPassword(Request $request){
+
+    }
 }

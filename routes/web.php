@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [IndexController::class, 'index'])->name('home');
+Route::get('contact-us',[IndexController::class, 'contactUs'])->name('contact-us');
 Route::get('details/{product_id}', [IndexController::class, 'details'])->name('product.details');
 Route::get('/products', [IndexController::class, 'productFilters'])->name('product.productFilters');
 Route::get('/getBasket', [CartController::class, 'getCart'])->name('basket.get');
@@ -42,7 +43,7 @@ Route::prefix('auth')->middleware(NonAuthorize::class)->group(function () {
     Route::post('/register', [AuthController::class, 'registerUser'])->name('auth.register');
     Route::get('/set-email', [AuthController::class, 'resestPassword'])->name('auth.resest-password.set-email');
     Route::post('/set-email', [AuthController::class, 'setEmail'])->name('auth.set-email');
-    Route::get()
+    Route::get('/set-new-password',[AuthController::class,'setNewPassword'])->name('auth.set-new-password');
 });
 
 /////////// user dashboard /////////////

@@ -250,3 +250,31 @@ img.slide-img {
         width: 20px;
         text-align: center;
     }
+
+    .custom-breadcrumb {
+        font-size: 0.9rem;
+        color: #6c757d;
+        background-color: #d0e1f4;
+        padding: 12px 18px;
+        border-radius: 6px;
+    }
+    
+    .breadcrumb-link {
+        color: #007bff;
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+    
+    .breadcrumb-link:hover {
+        color: #0056b3;
+        text-decoration: underline;
+    }
+    
+    .breadcrumb-separator {
+        margin: 0 8px;
+        color: #6c757d;
+    }
+    
+    .breadcrumb-current {
+        color: #6c757d;
+    }

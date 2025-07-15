@@ -1,6 +1,7 @@
 @extends('layouts.main_layout')
 
 @section('content')
+<x-breadcrumb>بازیابی رمز عبور</x-breadcrumb>
 <div class="container py-5">
     <div class="row justify-content-center">
         <!-- Login Form -->

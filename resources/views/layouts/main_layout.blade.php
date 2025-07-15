@@ -48,17 +48,17 @@
 
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav ml-auto text-right">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">خانه</a>
+                    <li @class(['nav-item','active'=>request()->routeIs('home')])>
+                        <a class="nav-link" href="{{route('home')}}">خانه</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">محصولات</a>
+                    <li @class(['nav-item','active'=>request()->routeIs('product.productFilters')])>
+                        <a class="nav-link" href="{{route('product.productFilters')}}">محصولات</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">دسته بندی ها</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">تماس با ما</a>
+                    <li @class(['nav-item','active'=>request()->routeIs('contact-us')])>
+                        <a class="nav-link" href="{{route('contact-us')}}">تماس با ما</a>
                     </li>
                 </ul>
 
@@ -142,16 +142,15 @@
             <div class="row">
                 <div class="col-lg-4 mb-4 mb-lg-0">
                     <h5 class="mb-3">درباره ما</h5>
-                    <p>فروشگاه اینترنتی لوازم یدکی خودرو با بیش از 10 سال سابقه در زمینه تأمین و توزیع قطعات با کیفیت
+                    <p>فروشگاه اینترنتی لوازم یدکی سامان یدک با بیش از 10 سال سابقه در زمینه تأمین و توزیع قطعات با کیفیت
                         خودرو</p>
                 </div>
                 <div class="col-lg-2 col-6 mb-4 mb-lg-0">
                     <h5 class="mb-3">لینک های مفید</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-white">خانه</a></li>
-                        <li class="mb-2"><a href="#" class="text-white">محصولات</a></li>
+                        <li class="mb-2"><a href="{{route('home')}}" class="text-white">خانه</a></li>
+                        <li class="mb-2"><a href="{{route('product.productFilters')}}" class="text-white">محصولات</a></li>
                         <li class="mb-2"><a href="#" class="text-white">تماس با ما</a></li>
-                        <li class="mb-2"><a href="#" class="text-white">سوالات متداول</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-6 mb-4 mb-lg-0">
@@ -165,7 +164,7 @@
                 <div class="col-lg-3">
                     <h5 class="mb-3">شبکه های اجتماعی</h5>
                     <div>
-                        <a href="#" class="text-white mr-3"><i class="fab fa-instagram fa-2x"></i></a>
+                        <a href="https://www.instagram.com/saman_parts/" class="text-white mr-3"><i class="fab fa-instagram fa-2x"></i></a>
                         <a href="#" class="text-white mr-3"><i class="fab fa-telegram fa-2x"></i></a>
                         <a href="#" class="text-white mr-3"><i class="fab fa-whatsapp fa-2x"></i></a>
                     </div>
@@ -173,7 +172,7 @@
             </div>
             <hr class="bg-light mt-4">
             <div class="text-center pt-3">
-                <p class="mb-0">© ۱۴۰۲ کلیه حقوق برای فروشگاه لوازم یدکی خودرو محفوظ است.</p>
+                <p class="mb-0">©  کلیه حقوق برای فروشگاه لوازم یدکی سامان یدک محفوظ است.</p>
             </div>
         </div>
     </footer>

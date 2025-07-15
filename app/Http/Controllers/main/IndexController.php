@@ -22,6 +22,10 @@ class IndexController extends Controller
         return view('main.index', ['categories' => $categories, 'discountedProducts' => $discountedProducts, 'kitProducts' => $kitProducts, 'lastProducts' => $lastProducts]);
     }
 
+    public function contactUs(){
+        return \view('main.contact-us');
+    }
+
     public function details(int $product_id)
     {
         $product = Product::findOrFail($product_id);
