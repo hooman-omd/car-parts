@@ -67,7 +67,7 @@ class PaymentController extends Controller
             $order = $user->order()->firstOrCreate([
                 'total_price' => $validatedTotalPrice['total_price'],
                 'cart' => Cookie::get('basket'),
-                'discount_code_id'=>$validatedTotalPrice['discountCode'] ?? null
+                'discount_code_id' => $validatedTotalPrice['discountCode'] ?? null
             ]);
         } else {
             $order = $orderObj;
@@ -120,15 +120,28 @@ class PaymentController extends Controller
         if ($request->query('Status') == 'NOK') {
             return \view('payment.failed');
         }
+        $user = Auth::user();
         $order = Order::findOrFail($order_id);
         $verify = $this->verify($order->total_price * 10, $request->query('Authority'));
         if ($verify['data']['code'] == 100) {
             $order->status = 'paid';
             $order->save();
+
+            $code = $user->discountCode()->where('discount_code_id', $order->discount_code_id)->first();
+
+            if ($code) {
+                $user->discountCode()->updateExistingPivot($order->discount_code_id, [
+                    'usage_count' => $code->pivot->usage_count + 1
+                ]);
+            } else {
+                $user->discountCode()->attach($order->discount_code_id, ['usage_count' => 1]);
+            }
+
+
             $payment = $order->payment()->create([
                 'ref_id' => $verify['data']['ref_id'],
             ]);
-            $address = Auth::user()->userAddresses()->where('is_default', true)->first();
+            $address = $user->userAddresses()->where('is_default', true)->first();
             if ($order->cart == Cookie::get('basket')) {
                 Cookie::queue(Cookie::forget('basket'));
             }
@@ -142,32 +155,41 @@ class PaymentController extends Controller
         if (!$code) {
             return \back()->with('codeFail', 'کد تخفیف وارد شده معتبر نمی باشد');
         }
+        $usage_count = Auth::user()->discountCode()->where('discount_code_id', $code->id)->first();
+        if ($usage_count != \null) {
+            if ($usage_count->pivot->usage_count >= $code->max_uses) {
+                return \back()->with('codeFail', 'تعداد دفعات استفاده از کد تخفیف به پایان رسیده است');
+            }
+        }
         return back()->with(['discountValue' => $code->discount_value, 'discountCode' => $code->id]);
     }
 
-    public function deleteUserOrder(Order $order){
+    public function deleteUserOrder(Order $order)
+    {
         $order->delete();
-        return \redirect()->route('userdashboard.orders')->with('success','سفارش مورد نظر لغو شد');
+        return \redirect()->route('userdashboard.orders')->with('success', 'سفارش مورد نظر لغو شد');
     }
 
-    public function deleteOrder(Order $order){
+    public function deleteOrder(Order $order)
+    {
         $order->delete();
-        return back()->with('success','سفارش مورد نظر لغو شد');
+        return back()->with('success', 'سفارش مورد نظر لغو شد');
     }
 
-    public function getOrders(Request $request){
+    public function getOrders(Request $request)
+    {
         $orders = Order::query();
         if ($request->filled('order_id')) {
-            $orders=$orders->where('id',$request->query('order_id'));
+            $orders = $orders->where('id', $request->query('order_id'));
         }
         if ($request->filled('user')) {
-            $userId=User::select('id')->where('name','like','%'.$request->query('user').'%');
-            $orders=$orders->whereIn('user_id',$userId);
+            $userId = User::select('id')->where('name', 'like', '%' . $request->query('user') . '%');
+            $orders = $orders->whereIn('user_id', $userId);
         }
         if ($request->filled('status')) {
-            $orders=$orders->where('status',$request->query('status'));
+            $orders = $orders->where('status', $request->query('status'));
         }
-        $orders=$orders->get();
-        return \view('payment.orders',['orders'=>$orders]);
+        $orders = $orders->get();
+        return \view('payment.orders', ['orders' => $orders]);
     }
 }

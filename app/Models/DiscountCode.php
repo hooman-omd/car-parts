@@ -11,4 +11,8 @@ class DiscountCode extends Model
     public function order(){
         return $this->hasMany(Order::class);
     }
+
+    public function user(){
+        return $this->belongsToMany(User::class)->withPivot('usage_count');
+    }
 }

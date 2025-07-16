@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Car;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {
@@ -23,7 +24,8 @@ class IndexController extends Controller
     }
 
     public function contactUs(){
-        return \view('main.contact-us');
+        $user = Auth::user() ?? null;
+        return \view('main.contact-us',['user'=>$user]);
     }
 
     public function details(int $product_id)

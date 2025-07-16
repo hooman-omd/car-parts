@@ -52,7 +52,7 @@
                         <a class="nav-link" href="{{route('home')}}">خانه</a>
                     </li>
                     <li @class(['nav-item','active'=>request()->routeIs('product.productFilters')])>
-                        <a class="nav-link" href="{{route('product.productFilters')}}">محصولات</a>
+                        <a class="nav-link" href="{{route('product.productFilters')}}" target="_blank">محصولات</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">دسته بندی ها</a>

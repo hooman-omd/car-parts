@@ -11,7 +11,7 @@
 
     <div class="row" dir="rtl">
         <!-- Contact Info -->
-        <div class="col-lg-4 mb-5 mb-lg-0">
+        <div class="col-12 mb-5 mb-lg-0">
             <div class="card shadow-sm h-100">
                 <div class="card-body text-right">
                     <h4 class="card-title text-primary mb-4">اطلاعات تماس</h4>
@@ -56,54 +56,10 @@
                     
                     <h5 class="mb-3 text-right">ما را دنبال کنید</h5>
                     <div class="social-media text-right">
-                        <a href="#" class="btn btn-outline-primary btn-sm ml-2"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/saman_parts/" class="btn btn-outline-primary btn-sm ml-2"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="btn btn-outline-primary btn-sm ml-2"><i class="fab fa-telegram"></i></a>
                         <a href="#" class="btn btn-outline-primary btn-sm"><i class="fab fa-whatsapp"></i></a>
                     </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Contact Form -->
-        <div class="col-lg-8">
-            <div class="card shadow-sm">
-                <div class="card-body text-right">
-                    <h4 class="card-title text-primary mb-4">فرم تماس با ما</h4>
-                    <p class="text-muted mb-4 text-right">برای ارتباط با ما، فرم زیر را پر کنید. در اسرع وقت با شما تماس خواهیم گرفت.</p>
-                    
-                    <form id="contactForm" method="POST" action="#">
-                        @csrf
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="name" class="float-right">نام و نام خانوادگی <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control text-right" id="name" name="name" required>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="phone" class="float-right">شماره تماس <span class="text-danger">*</span></label>
-                                <input type="tel" class="form-control text-left" dir="ltr" id="phone" name="phone" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="float-right">آدرس ایمیل</label>
-                            <input type="email" class="form-control text-left" dir="ltr" id="email" name="email">
-                        </div>
-                        <div class="form-group">
-                            <label for="subject" class="float-right">موضوع <span class="text-danger">*</span></label>
-                            <select class="form-control text-right" id="subject" name="subject" required>
-                                <option value="" selected disabled>انتخاب کنید</option>
-                                <option value="پیشنهاد">پیشنهاد</option>
-                                <option value="انتقاد">انتقاد</option>
-                                <option value="سوال درباره محصول">سوال درباره محصول</option>
-                                <option value="پیگیری سفارش">پیگیری سفارش</option>
-                                <option value="سایر">سایر</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message" class="float-right">متن پیام <span class="text-danger">*</span></label>
-                            <textarea class="form-control text-right" id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary float-left">ارسال پیام</button>
-                    </form>
                 </div>
             </div>
         </div>
