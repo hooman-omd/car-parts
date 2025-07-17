@@ -6,6 +6,7 @@ use App\Models\DiscountCode;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
@@ -141,6 +142,14 @@ class PaymentController extends Controller
             $payment = $order->payment()->create([
                 'ref_id' => $verify['data']['ref_id'],
             ]);
+
+            $cart = Json::decode($order->cart);
+            foreach ($cart as $id => $items) {
+                $cartProduct = Product::find($id);
+                $cartProduct->inventory -= $items['quantity'];
+                $cartProduct->save();
+            }
+            
             $address = $user->userAddresses()->where('is_default', true)->first();
             if ($order->cart == Cookie::get('basket')) {
                 Cookie::queue(Cookie::forget('basket'));

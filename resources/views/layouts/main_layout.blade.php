@@ -54,7 +54,7 @@
                     <li @class(['nav-item','active'=>request()->routeIs('product.productFilters')])>
                     <a class="nav-link" href="{{route('product.productFilters')}}">محصولات</a>
                 </li>
-                    <li class="nav-item">
+                    <li @class(['nav-item','active'=>request()->routeIs('basket.cart')])>
                         <a class="nav-link" href="{{route('basket.cart')}}">سبد خرید</a>
                     </li>
                     <li @class(['nav-item','active'=>request()->routeIs('contact-us')])>
@@ -150,7 +150,7 @@
                     <ul class="list-unstyled">
                         <li class="mb-2"><a href="{{route('home')}}" class="text-white">خانه</a></li>
                         <li class="mb-2"><a href="{{route('product.productFilters')}}" class="text-white">محصولات</a></li>
-                        <li class="mb-2"><a href="#" class="text-white">تماس با ما</a></li>
+                        <li class="mb-2"><a href="{{route('contact-us')}}" class="text-white">تماس با ما</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-6 mb-4 mb-lg-0">

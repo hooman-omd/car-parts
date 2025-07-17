@@ -51,10 +51,16 @@
                 </ul>
             </div>
 
+            @if($product->inventory > 0)
             <button class="btn btn-primary btn-lg btn-block add-to-cart" data-id="{{$product->id}}" data-name="{{$product->title}}"
                 data-price="{{$product->percentage ? $product->price - ($product->price * ($product->percentage/100)) : $product->price}}" data-img="{{asset($product->thumbnail_1)}}">
                 <i class="fas fa-cart-plus"></i> افزودن به سبد خرید
             </button>
+            @else
+            <button class="btn btn-secondary btn-lg btn-block" disabled>
+                <i class="fas fa-battery-quarter"></i> اتمام موجودی
+            </button>
+            @endif
 
             <div class="product-description mt-5">
                 <h4 class="mb-3 text-center">توضیحات محصول</h4>

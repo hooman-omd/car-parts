@@ -96,7 +96,7 @@
         <div class="row">
             <div class="owl-carousel owl-theme">
                 @foreach($discountedProducts as $product)
-                <x-discount-card id="{{$product->id}}" title="{{$product->title}}" image="{{$product->thumbnail_1}}" price="{{$product->price}}" percentage="{{$product->percentage}}" />
+                <x-discount-card id="{{$product->id}}" title="{{$product->title}}" image="{{$product->thumbnail_1}}" price="{{$product->price}}" percentage="{{$product->percentage}}" inventory="{{$product->inventory}}" />
                 @endforeach
             </div>
         </div>
@@ -121,9 +121,9 @@
             <div class="owl-carousel owl-theme">
                 @foreach($kitProducts as $product)
                     @if($product->percentage != null)
-                        <x-discount-card id="{{$product->id}}" title="{{$product->title}}" image="{{$product->thumbnail_1}}" price="{{$product->price}}" percentage="{{$product->percentage}}" />
+                        <x-discount-card id="{{$product->id}}" title="{{$product->title}}" image="{{$product->thumbnail_1}}" price="{{$product->price}}" percentage="{{$product->percentage}}" inventory="{{$product->inventory}}" />
                     @else
-                        <x-card id="{{$product->id}}" title="{{$product->title}}" image="{{$product->thumbnail_1}}" price="{{$product->price}}" />
+                        <x-card id="{{$product->id}}" title="{{$product->title}}" image="{{$product->thumbnail_1}}" price="{{$product->price}}" inventory="{{$product->inventory}}"/>
                     @endif
                 @endforeach
             </div>
@@ -148,9 +148,9 @@
                 <div class="owl-carousel owl-theme">
                 @foreach($lastProducts as $product)
                     @if($product->percentage != null)
-                        <x-discount-card id="{{$product->id}}" title="{{$product->title}}" image="{{$product->thumbnail_1}}" price="{{$product->price}}" percentage="{{$product->percentage}}" />
+                        <x-discount-card id="{{$product->id}}" title="{{$product->title}}" image="{{$product->thumbnail_1}}" price="{{$product->price}}" percentage="{{$product->percentage}}" inventory="{{$product->inventory}}"/>
                     @else
-                        <x-card id="{{$product->id}}" title="{{$product->title}}" image="{{$product->thumbnail_1}}" price="{{$product->price}}" />
+                        <x-card id="{{$product->id}}" title="{{$product->title}}" image="{{$product->thumbnail_1}}" price="{{$product->price}}" inventory="{{$product->inventory}}"/>
                     @endif
                 @endforeach
                 </div>

@@ -73,9 +73,9 @@
                 @forelse($products as $product)
                 <div class="col-md-4 mb-4">
                     @if($product->percentage != null)
-                    <x-discount-card id="{{$product->id}}" title="{{$product->title}}" image="{{$product->thumbnail_1}}" price="{{$product->price}}" percentage="{{$product->percentage}}" />
+                    <x-discount-card id="{{$product->id}}" title="{{$product->title}}" image="{{$product->thumbnail_1}}" price="{{$product->price}}" percentage="{{$product->percentage}}" inventory="{{$product->inventory}}" />
                     @else
-                    <x-card id="{{$product->id}}" title="{{$product->title}}" image="{{$product->thumbnail_1}}" price="{{$product->price}}" />
+                    <x-card id="{{$product->id}}" title="{{$product->title}}" image="{{$product->thumbnail_1}}" price="{{$product->price}}" inventory="{{$product->inventory}}" />
                     @endif
                 </div>
                 @empty

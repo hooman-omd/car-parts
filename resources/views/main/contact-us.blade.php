@@ -70,7 +70,7 @@
         <div class="col-12">
             <div class="card shadow-sm">
                 <div class="card-body p-0">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3229.123456789012!2d45.12345678901234!3d37.12345678901234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDA3JzI0LjQiTiA0NcKwMDcnMjQuNCJF!5e0!3m2!1sen!2sir!4v1234567890123!5m2!1sen!2sir" 
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d236.01382013605942!2d45.05160844872184!3d37.50232402076883!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1752756886820!5m2!1sen!2s"
                             width="100%" 
                             height="400" 
                             style="border:0;" 
