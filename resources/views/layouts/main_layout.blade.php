@@ -49,17 +49,17 @@
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav ml-auto text-right">
                     <li @class(['nav-item','active'=>request()->routeIs('home')])>
-                        <a class="nav-link" href="{{route('home')}}">خانه</a>
-                    </li>
+                    <a class="nav-link" href="{{route('home')}}">خانه</a>
+                </li>
                     <li @class(['nav-item','active'=>request()->routeIs('product.productFilters')])>
-                        <a class="nav-link" href="{{route('product.productFilters')}}" target="_blank">محصولات</a>
-                    </li>
+                    <a class="nav-link" href="{{route('product.productFilters')}}">محصولات</a>
+                </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">دسته بندی ها</a>
+                        <a class="nav-link" href="{{route('basket.cart')}}">سبد خرید</a>
                     </li>
                     <li @class(['nav-item','active'=>request()->routeIs('contact-us')])>
-                        <a class="nav-link" href="{{route('contact-us')}}">تماس با ما</a>
-                    </li>
+                    <a class="nav-link" href="{{route('contact-us')}}">تماس با ما</a>
+                </li>
                 </ul>
 
                 <div class="d-flex align-items-center">

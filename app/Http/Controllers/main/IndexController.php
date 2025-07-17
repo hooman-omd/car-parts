@@ -19,8 +19,13 @@ class IndexController extends Controller
             $query->orderBy('id','desc')->limit(10);
         }])->find(2)->product;
         $lastProducts = Product::orderBy('id','desc')->limit(10)->get();
+        $cars = Car::select('id', 'brand', 'model')
+              ->orderBy('brand')
+              ->orderBy('model')
+              ->get()
+              ->groupBy('brand');
 
-        return view('main.index', ['categories' => $categories, 'discountedProducts' => $discountedProducts, 'kitProducts' => $kitProducts, 'lastProducts' => $lastProducts]);
+        return view('main.index', ['categories' => $categories, 'discountedProducts' => $discountedProducts, 'kitProducts' => $kitProducts, 'lastProducts' => $lastProducts, 'cars'=>$cars]);
     }
 
     public function contactUs(){
